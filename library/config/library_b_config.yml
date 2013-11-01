@@ -10,6 +10,9 @@ stompQueueName: /queue/99999.book.orders
 # FIXME - Replace 99999 with your ID
 stompTopicName: /topic/99999.book.computer
 
+# Name for library B
+libraryName: library-b
+
 # TODO: Apollo STOMP Broker URL and login
 #apolloUser: "admin"
 #apolloPassword: "password"

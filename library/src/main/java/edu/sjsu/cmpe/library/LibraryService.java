@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.yammer.dropwizard.Service;
+import com.yammer.dropwizard.assets.AssetsBundle;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.views.ViewBundle;
@@ -27,6 +28,7 @@ public class LibraryService extends Service<LibraryServiceConfiguration> {
     public void initialize(Bootstrap<LibraryServiceConfiguration> bootstrap) {
 	bootstrap.setName("library-service");
 	bootstrap.addBundle(new ViewBundle());
+	bootstrap.addBundle(new AssetsBundle());
     }
 
     @Override
@@ -35,7 +37,8 @@ public class LibraryService extends Service<LibraryServiceConfiguration> {
 	// This is how you pull the configurations from library_x_config.yml
 	String queueName = configuration.getStompQueueName();
 	String topicName = configuration.getStompTopicName();
-	log.debug("Queue name is {}. Topic name is {}", queueName,
+	log.debug("{} - Queue name is {}. Topic name is {}",
+		configuration.getLibraryName(), queueName,
 		topicName);
 	// TODO: Apollo STOMP Broker URL and login
 
